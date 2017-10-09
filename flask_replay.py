@@ -55,7 +55,7 @@ class Channel(db.Model, Session):
     channel_name = db.Column(db.String(200), unique=True, nullable=False)
     rtmp_url = db.Column(db.String(45))
     active = db.Column(db.Integer, default=0)
-    start = db.Column(db.Integer)
+    start = db.Column(db.Integer, default=0)
     PID = db.Column(db.Integer)
     PGID = db.Column(db.Integer)
     client_ip = db.Column(db.String(100))
@@ -65,6 +65,11 @@ class Channel(db.Model, Session):
         self.channel_id = id
         self.channel_name = name
 
+    def clear(self):
+        self.rtmp_url = ''
+        self.active = 0
+        self.client_ip = ''
+        db.session.commit()
 
 
 class Program(db.Model, Session):
@@ -110,7 +115,7 @@ def delete_channel(id):
         assert id != None
         channel = Channel.query.filter_by(channel_id=id).first()
         if channel is not None:
-            channel.delete()
+            channel.clear()
             ret = OPERATE_SUCCESSED
     except Exception as e:
         logging.exception(e)
@@ -184,7 +189,7 @@ def set_remote_channel(channel_id, ip, op):
 
 def select_channel_info():
     try:
-        channels_active = Channel.query.filter_by(active=1).all()
+        channels_active = Channel.query.filter_by(active=1).order_by(Channel.sort)
         channels_inactive = Channel.query.filter_by(active=0).all()
         active_list = []
         inactive_list = []
@@ -197,7 +202,7 @@ def select_channel_info():
                 'st': channel.start,
                 'sort': channel.sort
             })
-        if len(active_list) != 0: active_list.sort(key=lambda x:x['sort'])
+        # if len(active_list) != 0: active_list.sort(key=lambda x:x['sort'])
         for channel in channels_inactive:
             inactive_list.append({
                 'channel_id': channel.channel_id,
@@ -268,13 +273,13 @@ def admin():
 
 
 if __name__ == '__main__':
-    # log_file_name = 'flask_replay.log'
-    # log_file_handler = TimedRotatingFileHandler(filename=log_file_name, when="D", interval=7, backupCount=3)
-    # logging.basicConfig(
-    #     level=logging.DEBUG,
-    #     format='%(asctime)s %(filename)s [line:%(lineno)d] %(levelname)s %(message)s',
-    #     handlers=[log_file_handler]
-    # )
-    app.run(debug=True)
+    log_file_name = 'flask_replay.log'
+    log_file_handler = TimedRotatingFileHandler(filename=log_file_name, when="D", interval=7, backupCount=3)
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s %(filename)s [line:%(lineno)d] %(levelname)s %(message)s',
+        handlers=[log_file_handler]
+    )
+    app.run(debug=False)
     # c = Channel.query.filter_by(channel_id='CCTV1').first()
     # print(c.channel_id)

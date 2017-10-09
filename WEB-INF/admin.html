@@ -1,0 +1,342 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Channel Management</title>
+    <meta name="description" content="这是一个 table 页面">
+    <meta name="keywords" content="table">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <!--modify by hhy in 2017.6.24-->
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，我们暂不支持。 请 <a href="http://browsehappy.com/"
+                                                                 target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+<!-- content start -->
+<div class="container">
+
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">Channel Management</strong></div>
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-12">
+            <div class=" am-inline">
+                <div class="am-btn-group am-btn-group-xs">
+                    <button id="add-btn" type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span>
+                        Add
+                    </button>
+                    <button id="insert-btn" type="button" class="am-btn am-btn-warning"><span
+                            class="am-icon-plus"></span>
+                        Insert
+                    </button>
+                    <!-- <button id="delete-btn" type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> Delete</button> -->
+                </div>
+            </div>
+            <div class=" am-fr am-inline" >
+                <div class="am-btn-group am-btn-group-xs am-fr">
+                    <button id="sort-btn" type="button" class="am-btn am-btn-danger am-fr"><span
+                            class="am-icon-refresh"></span>
+                        Sort
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="am-u-sm-12 am-u-md-5">
+            <!--  Update every <span style="width:40px;" id="frequence">1</span> days.<button id="frequence-btn" type="button" class="am-btn am-btn-xs am-btn-default am-radius">Change</button> -->
+        </div>
+        <div class="am-u-sm-12 am-u-md-3">
+            <!--  <div class="am-input-group am-input-group-sm">
+               <input id="search-input" type="text" class="am-form-field">
+               <span class="am-input-group-btn">
+                 <button class="am-btn am-btn-default" type="button">Search</button>
+               </span>
+             </div> -->
+        </div>
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <form class="am-form">
+                <table class="am-table am-table-striped am-table-hover table-main">
+                    <thead>
+                    <tr>
+                        <!-- <th class="table-check"><input id="check-all" type="checkbox" /></th> -->
+                        <th class="table-id">id</th>
+                        <th class="table-title">channel_id</th>
+                        <th class="table-type">channel_name</th>
+                        <th class="table-type">rtmp_url</th>
+                        <th class="table-type">录制机ip</th>
+                        <th class="table-type">Operate</th>
+                        <th class="table-set">Status</th>
+                        <th class="table-set">Error</th>
+                    </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    <!--  <tr>
+
+                      <td>1</td>
+                      <td>ABC</td>
+                      <td>123456789012</td>
+                      <td>567fsdfsdfsdfsdfsdfsdfsdfsdff</td>
+                      <td >
+                        <div class="am-btn-toolbar" >
+                          <div class="am-btn-group am-btn-group-xs">
+                            <button class="am-btn am-btn-d
+                            efault am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> Edit</button>
+                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> Delete</button>
+                          </div>
+                        </div>
+                      </td>
+                      <td> <span>
+                          <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-stop"></span> </button>运行
+                      </span></td>
+                    </tr>  -->
+                    </tbody>
+                </table>
+                <div class="am-cf">
+                    <span id="bottom">共 <span id="bottom-number">0</span> 条记录</span>
+                    <div class="am-fr">
+                        <ul class="am-pagination">
+                            <!-- <li class="am-disabled"><a href="#">«</a></li>
+                            <li class="am-active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">»</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <hr/>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- content end -->
+
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Are you sure to delete?</div>
+        <div class="am-modal-bd">
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>Cancel</span>
+            <span class="am-modal-btn" data-am-modal-confirm>&nbsp;&nbsp;&nbsp;OK&nbsp;&nbsp;&nbsp;</span>
+        </div>
+    </div>
+</div>
+
+<div class="am-modal am-modal-prompt" tabindex="-1" id="add-prompt" style="width:410px;margin-left:-205px;">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Add Channel</div>
+        <div class="am-modal-bd" style="text-align:left;">
+            <form class="am-form">
+
+                <div class="am-form-group">
+                    <label for="add-prompt-id">Select Channel:</label>
+                    <select id="add-prompt-id" onchange="nameChange()">
+                        <option value="option1">选项一...</option>
+                        <option value="option2">选项二.....</option>
+                        <option value="option3">选项三........</option>
+                    </select>
+                    <!-- <span class="am-form-caret"></span> -->
+                </div>
+
+                <div class="am-form-group">
+                    <label for="add-prompt-name">Channel Name:</label>
+                    <input id="add-prompt-name" type="text" class="am-modal-prompt-input"
+                           style="margin:0px;display:inline-block">
+                </div>
+
+                <div class="am-form-group">
+                    <label for="add-prompt-url">Rtmp URL:</label>
+                    <input id="add-prompt-url" type="text" class="am-modal-prompt-input"
+                           style="margin:0px;display:inline-block">
+                </div>
+
+                <div class="am-form-group">
+                    <label for="add-prompt-ip">Client IP:</label>
+                    <input id="add-prompt-ip" type="text" class="am-modal-prompt-input"
+                           style="margin:0px;display:inline-block">
+                </div>
+
+
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>Cancel</span>
+            <span class="am-modal-btn" data-am-modal-confirm>Submit</span>
+        </div>
+    </div>
+</div>
+
+<div class="am-modal am-modal-prompt" tabindex="-1" id="insert-prompt" style="width:410px;margin-left:-205px;">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Add Channel</div>
+        <div class="am-modal-bd" style="text-align:left;">
+            <form class="am-form">
+
+                <div class="am-form-group">
+                    <label for="insert-prompt-id">Channel ID:</label>
+                    <input id="insert-prompt-id" type="text" class="am-modal-prompt-input"
+                           style="margin:0px;display:inline-block">
+                    <!-- <span class="am-form-caret"></span> -->
+                </div>
+
+                <div class="am-form-group">
+                    <label for="insert-prompt-name">Channel Name:</label>
+                    <input id="insert-prompt-name" type="text" class="am-modal-prompt-input"
+                           style="margin:0px;display:inline-block">
+                </div>
+
+                <div class="am-form-group">
+                    <label for="insert-prompt-url">Rtmp URL:</label>
+                    <input id="insert-prompt-url" type="text" class="am-modal-prompt-input"
+                           style="margin:0px;display:inline-block">
+                </div>
+
+                <div class="am-form-group">
+                    <label for="insert-prompt-ip">Client IP:</label>
+                    <input id="insert-prompt-ip" type="text" class="am-modal-prompt-input"
+                           style="margin:0px;display:inline-block">
+                </div>
+
+
+            </form>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>Cancel</span>
+            <span class="am-modal-btn" data-am-modal-confirm>Submit</span>
+        </div>
+    </div>
+</div>
+
+<div class="am-modal am-modal-prompt" tabindex="-1" id="edit-prompt" style="width:410px;margin-left:-205px;">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">Edit Channel</div>
+        <div class="am-modal-bd" style="text-align:left;">
+
+            <div class="am-form-group">
+                <label for="prompt-user">Channel_id:</label>
+                <input id="prompt-user" type="text" class="am-modal-prompt-input"
+                       style="margin:0px;display:inline-block" disabled="disabled">
+            </div>
+
+            <div class="am-form-group">
+                <label for="prompt-password">Channel_name:</label>
+                <input id="prompt-password" type="text" class="am-modal-prompt-input"
+                       style="margin:0px;display:inline-block">
+            </div>
+
+            <div class="am-form-group">
+                <label for="prompt-total">rtmp_url:</label>
+                <input id="prompt-total" type="text" class="am-modal-prompt-input" style="margin:0px;">
+            </div>
+
+            <div class="am-form-group">
+                <label for="prompt-ip">ip:</label>
+                <input id="prompt-ip" type="text" class="am-modal-prompt-input" style="margin:0px;">
+            </div>
+
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>Cancel</span>
+            <span class="am-modal-btn" data-am-modal-confirm>Submit</span>
+        </div>
+    </div>
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery-1.12.2.min.js"></script>
+<script src="assets/js/jquery.md5.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/Sortable.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+    $(function () {
+
+        TStable.init();
+        $("#add-btn").click(function (event) {
+            console.log("click");
+
+            $("#add-prompt").find("#add-prompt-id").html("");
+
+            for (var i = 0; i < TStable.sel_list.length; i++) {
+                $("#add-prompt").find("#add-prompt-id").append('<option value="' + TStable.sel_list[i].channel_id + '">' + TStable.sel_list[i].channel_name + '(' +
+                    TStable.sel_list[i].channel_id + ')' + '</option>');
+            }
+
+            $("#add-prompt").find("#add-prompt-name").val(TStable.sel_list[0].channel_name);
+            $("#add-prompt").find("#add-prompt-url").val("");
+            $("#add-prompt").find("#add-prompt-ip").val("");
+
+            $("#add-prompt").modal({
+                relatedTarget: this,
+                onConfirm: function (e) {
+                    //alert('你输入的是：' + e.data || '');
+                    if (e.data[0] == "" || e.data[1] == "" || e.data[2] == "") {
+                        alert("添加失败");
+                    } else {
+                        TStable.addData($("#add-prompt").find("#add-prompt-id").val(), e.data[0], e.data[1], e.data[2]);
+                    }
+
+                },
+                onCancel: function (e) {
+                    //alert('不想说!');
+                }
+            });
+
+        });
+
+       window.setInterval(function () {
+           console.log("update 10");
+           TStable.fresh();
+       }, 10000);
+        Sortable.create(document.getElementById("table-body"), {
+            /* options */
+            animation: 150
+        });
+
+    });
+
+    function nameChange() {
+        // console.log(  $("#add-prompt").find("#add-prompt-id").val());
+        var temp = $("#add-prompt").find("#add-prompt-id").val();
+
+        for (var i = 0; i < TStable.sel_list.length; i++) {
+            if (TStable.sel_list[i].channel_id == temp) {
+                $("#add-prompt").find("#add-prompt-name").val(TStable.sel_list[i].channel_name);
+                break;
+            }
+        }
+
+
+        // $("#add-prompt").find("#add-prompt-name").val($("#add-prompt").find("#add-prompt-id").val());
+    }
+
+
+</script>
+</body>
+</html>
