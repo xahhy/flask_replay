@@ -127,10 +127,13 @@
 <!-- content end -->
 
 
-<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+<div class="am-modal am-modal-confirm am-modal-prompt" tabindex="-1" id="my-confirm">
     <div class="am-modal-dialog">
-        <div class="am-modal-hd">Are you sure to delete?</div>
+        <div class="am-modal-hd">确定要删除吗?</div>
         <div class="am-modal-bd">
+            <label class="am-checkbox-inline am-danger">
+                <input  type="checkbox"  value="" data-am-ucheck> <span css="font-color:red;">危险!勾选此选项将永久删除当前频道</span>
+            </label>
         </div>
         <div class="am-modal-footer">
             <span class="am-modal-btn" data-am-modal-cancel>Cancel</span>

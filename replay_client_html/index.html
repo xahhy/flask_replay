@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>直播回看</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css"> -->
+    <link rel="stylesheet" href="css/sm.min.css">
+    <!-- <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css"> -->
+    <link rel="stylesheet" href="css/sm-extend.min.css">
+
+    <!-- <link href="//vjs.zencdn.net/5.10/video-js.min.css" rel="stylesheet"> -->
+    <link href="css/video-js.min.css" rel="stylesheet">
+
+
+    <!-- <script src="//vjs.zencdn.net/5.10/video.min.js"></script> -->
+
+    <script src="js/video.min.js"></script>
+
+
+    <script type="text/javascript" src="js/videojs-contrib-hls.min.js"></script>
+
+    <link rel="apple-touch-icon-precomposed" href="icon.png">
+    <link rel="stylesheet" type="text/css" href="my.css">
+
+  </head>
+  <body>
+    <div class="page-group">
+        <div class="page page-current">
+        <!-- 你的html代码 -->
+
+        <header class="bar bar-nav">
+
+          <a href="#" class="icon icon-menu pull-left open-panel" data-panel='#panel-left-demo'></a>
+          <a href="#" class="icon icon-right pull-right open-panel" data-panel='#panel-right-video'></a>
+          <h1 class="title">CCTV2-啊啊啊啊</h1>
+        </header>
+
+        <div class="content">
+          <div class="buttons-tab">
+            <a href="#tab1" class="tab-link active button" id="tab-link-1">直播</a>
+            <a href="#tab2" class="tab-link button" id="tab-link-2">回看</a>
+          </div>
+          <div class="content-block">
+            <div class="tabs">
+              <div id="tab1" class="tab active">
+                <div class="content-block">
+                 <!--  <p>This is tab 1 content</p> -->
+                    <div class="content-block-title video-title-1"></div>
+                    <div class="content-block-title video-title-2">当前频道： 
+                        <span style="float: right"></span>
+                    </div>
+
+                    <!-- <div class="video-frame"> -->
+                        
+                    <!-- </div> -->
+                    <!-- <div class="card" style="margin: -0.5rem;background-color: #000000">
+                      <div class="card-content">
+                        <div class="card-content-inner video-frame">
+                            
+                            <p></p>
+                            <p></p>
+                        </div>
+                      </div>
+                    </div> -->
+
+
+
+
+
+
+                </div>
+              </div>
+              <div id="tab2" class="tab">
+                <div class="content-block">
+                  <!-- <p>This is tab 2 content</p> -->
+
+                  <div class="content-block-title video-title-1">正在播放：新闻联播</div>
+                  <div class="content-block-title video-title-2"><span class="video-title-2-inner">节目时间：</span>
+                    <span style="float: right"><a href="#" class="create-actions">选择日期</a></span>
+                  </div>
+
+
+                  <!-- <div class="video-frame"> -->
+                        
+                  <!-- </div> -->
+
+                </div>
+              </div>
+            
+              
+            </div>
+          </div>
+        </div>
+
+
+            <div class="video-frame">
+                
+                <!-- <div id="myElement"></div> -->
+                <video id="myElement" style="margin:0 auto" class="video-js vjs-default-skin" controls>
+            </div>
+
+        </div>
+
+    
+    
+    
+
+    <div class="panel-overlay"></div>
+
+    <div class="panel panel-right panel-reveal theme-dark" id="panel-right-video">
+      <div class="content-block">
+        <p>选择节目</p>
+        <p></p>
+        <p><a href="#" class="close-panel">关闭</a></p>
+      </div>
+      <div class="list-block" id="video-list-block">
+
+        <ul id="video-list">
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">新闻联播</div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">新闻联播</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">新闻联播</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">新闻联播</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">新闻联播</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">新闻联播</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">新闻联播</div>
+                </div>
+                
+            </li>
+
+        </ul>
+
+      </div>
+    </div>
+    <!-- Left Panel with Reveal effect -->
+    <div class="panel panel-left panel-reveal theme-dark" id='panel-left-demo'>
+      <div class="content-block">
+        <p>选择频道</p>
+        <p></p>
+        <p><a href="#" class="close-panel">关闭</a></p>
+      </div>
+      <div class="list-block" id="channel-list-block">
+
+        <ul id="channel-list">
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV1</div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV2</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV2</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV2</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV3</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV4</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV5</div>
+                </div>
+                
+            </li>
+            <li>
+                <div class="item-content">
+                    <div class="item-media"><i class="icon icon-computer"></i></div>
+                    <div class="item-inner">CCTV6</div>
+                </div>
+                
+            </li>
+
+
+        </ul>
+
+      </div>
+    </div>
+
+ 
+
+    </div>
+    
+
+    <!-- <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script> -->
+    <script type="text/javascript" src='js/zepto.min.js'></script>
+<!--    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>  -->
+    <script type="text/javascript">
+        function IsAndroid()
+        {
+            var u = navigator.userAgent;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+            return isAndroid;
+        }
+
+        function ShowPlayer()
+        {   
+            if(IsAndroid())
+            {
+                $('.video-frame').hide();
+                console.log('show video ');
+            }
+
+            
+
+        }
+
+        function HidePlayer()
+        {
+            if(IsAndroid())
+            {
+                $('.video-frame').show();
+                console.log('hide video');
+            }
+            
+        }
+
+    </script>
+
+    <!-- <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
+    <script type="text/javascript" src='js/sm.js'></script>
+<!--    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>  -->
+
+<!--     <script type="text/javascript" src="js/jwplayer.js"></script>
+    <script type="text/javascript" src="js/jwpsrv.js"></script>
+    <script type="text/javascript">jwplayer.key="Ccch0aO5mGEZ0zbytqE9EZbb622LMzKNzCuuNA==";</script> -->
+
+    <script type="text/javascript" src="app.js" charset='utf-8'></script>
+
+    <script type="text/javascript">
+
+    
+
+    </script>
+
+    <div class="popup-overlay"></div>
+  </body>
+</html>

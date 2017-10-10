@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>video test</title>
+	<style type="text/css">
+
+	.content{
+		background-color: #0000aa;
+		width: 500px;
+		height: 400px;
+	}
+
+	</style>
+</head>
+
+<body>
+<h1>Viedeo Test</h1>
+
+<div class="content" ><div id='myElement'>Loading the player ...</div></div>
+
+<br><br>
+<a href="#">change video</a>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="js/jwplayer.js"></script>
+<script type="text/javascript" src="js/jwpsrv.js"></script>
+<!-- <script type="text/javascript" src="js/jwplayer.html5.js"></script> -->
+<script type="text/javascript">jwplayer.key="Ccch0aO5mGEZ0zbytqE9EZbb622LMzKNzCuuNA==";</script>
+<script type="text/javascript">
+	var playerInstance;
+
+	function rtmp2hls(url)
+	{
+		var ret = url;
+
+		if(url.indexOf("http") == -1)
+		{
+			ret = url.replace("rtmp","http");
+			ret += ".m3u8";
+		}
+
+		return ret;
+	}
+
+	function InitPlayer(url)
+	{
+
+		playerInstance = jwplayer('myElement');
+        playerInstance.setup({ 
+        //file:  'http://localhost/dianbo/test.mp4',     //'upload/1.mp4', 
+        //image: 'upload/cover.jpg'
+        file :rtmp2hls(url),
+        autostart : true,
+        width :  500 + 'px',
+        height : 300+'px',
+
+        rtmp: { 
+        bufferlength: 3
+        }, 
+		
+        primary: "html5"
+      });
+
+	}
+
+	function PlayVideo(url)
+	{
+		playerInstance.remove();
+
+		playerInstance = jwplayer('myElement');
+        playerInstance.setup({ 
+	        //file:  'http://localhost/dianbo/test.mp4',     //'upload/1.mp4', 
+	        //image: 'upload/cover.jpg'
+	        file :rtmp2hls(url),
+	        autostart : true,
+	        width :  500 + 'px',
+	        height : 300+'px',
+
+	        rtmp: { 
+	        bufferlength: 3
+	        }, 
+			
+	        primary: "html5"
+	      });
+
+	}
+
+	$(function () {
+    'use strict'; 
+
+    	InitPlayer("rtmp://1.8.203.198/live/stream4");
+
+    	$('a').on('click',function(){
+
+    		PlayVideo("rtmp://1.8.203.198/live/stream1");
+    	});
+
+    });
+</script>
+</body>
+</html>

@@ -261,14 +261,19 @@
     }
 
     function deleteClick() {
-
+        $('#my-confirm').find('input').uCheck('uncheck');
         $('#my-confirm').modal({
             relatedTarget: this,
             onConfirm: function (options) {
                 //var $link = $(this.relatedTarget).prev('a');
                 var name = $(this.relatedTarget).parents("td").prev().prev().prev().prev().text();
                 //alert("delete: "+name);
-                DeleteOneData(name);
+                var checked = $('#my-confirm').find('input')[0].checked;
+                if(checked){
+                    DeleteOneDataPermanent(name);
+                }else{
+                    DeleteOneData(name);
+                }
             },
             // closeOnConfirm: false,
             onCancel: function () {
@@ -277,7 +282,21 @@
         });
     }
 
+    var DeleteOneDataPermanent = function (channel_id) {
+        $.get(deletePath, {op: "delete", id: channel_id, permanent: 1},
+            function (data) {
+                if (data == 'Operate successed') {
+                    alert("Succeed!");
+                    LoadDataGet();
+                    return;
+                } else if (data == 'Invalid Request') {
+                    alert("Failed!");
+                    LoadDataGet();
+                    return;
+                }
+            });
 
+    }
     var DeleteOneData = function (channel_id) {
         //alert("delete:"+ TStable.list[id-1].username);
         $.get(deletePath, {op: "delete", id: channel_id},

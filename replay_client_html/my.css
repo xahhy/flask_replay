@@ -1,0 +1,26 @@
+.video-frame
+{
+
+	/*height: 200px;*/
+	background-color: #000000;
+	margin-top: 7.5rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.video-title-1
+{
+	margin: -0.5rem;
+}
+
+.video-title-2
+{
+	margin-top: 0.7rem;
+	margin-left: -0.5rem;
+	margin-right: -0.5rem;
+}
+
+ul .active
+{
+	background-color: #444444;
+}
